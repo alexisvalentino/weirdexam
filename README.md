@@ -4,7 +4,7 @@ ShieldBase is a production-grade, insurance-focused AI platform built with **Nex
 
 ---
 
-## 🏗️ Architecture Overview
+## Architecture Overview
 
 The system is split into two primary layers:
 
@@ -21,7 +21,7 @@ The system is split into two primary layers:
 
 ---
 
-## 📈 State Machine & Design Decisions
+## State Machine & Design Decisions
 
 ### The LangGraph Flow
 The brain of the assistant uses a directed acyclic graph (DAG) structure defined in `app/graph/graph.py`.
@@ -39,7 +39,7 @@ The brain of the assistant uses a directed acyclic graph (DAG) structure defined
 
 ---
 
-## 🚀 Getting Started
+## Getting Started
 
 ### Prerequisites
 - Python 3.10+
@@ -80,7 +80,7 @@ Interact with it through localhost **`http://localhost:3000`**.
 
 ---
 
-## 👤 User Walkthrough (End-to-End)
+## User Walkthrough (End-to-End)
 
 The ShieldBase experience is designed to feel like a conversation with an expert agent, not a web form:
 
