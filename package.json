@@ -1,0 +1,14 @@
+{
+  "name": "shieldbase-root",
+  "version": "1.0.0",
+  "description": "Root configuration for ShieldBase Assistant",
+  "scripts": {
+    "dev:frontend": "npm --prefix frontend run dev",
+    "dev:backend": "powershell -Command \"$env:PYTHONPATH='.'; .\\venv\\Scripts\\python -m app.api.main\"",
+    "dev": "npm --prefix frontend run dev",
+    "install:all": "npm install --prefix frontend && .\\venv\\Scripts\\pip install -r requirements.txt"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
