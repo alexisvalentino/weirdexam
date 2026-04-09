@@ -83,7 +83,7 @@ The AI logic is defined as a directed graph in `app/graph/graph.py`:
 
 ---
 
-## 🚀 Getting Started
+## Getting Started
 
 ### Prerequisites
 - Python 3.10+
