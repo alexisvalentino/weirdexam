@@ -24,42 +24,59 @@ export function ChatMessage({ message, isTyping }: ChatMessageProps) {
   return (
     <div
       className={cn(
-        "flex w-full mt-4",
+        "flex w-full mt-6 group animate-in fade-in slide-in-from-bottom-2 duration-500",
         isUser ? "justify-end" : "justify-start"
       )}
     >
+      {(!isUser || isTyping) && (
+        <div className="mr-3 mt-1 flex-shrink-0">
+          <div className="h-9 w-9 rounded-xl overflow-hidden bg-gray-900 ring-2 ring-white shadow-sm dark:bg-gray-800 dark:ring-gray-950">
+            <img 
+              src="/apple-touch-icon.png" 
+              alt="ShieldBase Assistant" 
+              className="h-full w-full object-cover" 
+            />
+          </div>
+        </div>
+      )}
       <div
         className={cn(
-          "max-w-[85%] md:max-w-[75%] px-4 py-3 rounded-md text-[15px] leading-relaxed",
+          "relative max-w-[85%] md:max-w-[80%] px-5 py-3.5 text-[15px] leading-relaxed shadow-sm transition-all",
           isUser
-            ? "bg-blue-600 text-white"
+            ? "bg-blue-600 text-white rounded-[20px] rounded-tr-none hover:shadow-md"
             : isError
-            ? "bg-red-50 text-red-900 border border-red-200 dark:bg-red-950/50 dark:text-red-200 dark:border-red-900"
-            : "bg-white text-gray-900 border border-gray-200 dark:bg-gray-900 dark:text-gray-100 dark:border-gray-800"
+            ? "bg-red-50 text-red-900 border border-red-100 rounded-[20px] rounded-tl-none dark:bg-red-950/30 dark:text-red-200 dark:border-red-900/50"
+            : "bg-gray-100 text-gray-800 rounded-[20px] rounded-tl-none dark:bg-gray-800/60 dark:text-gray-100 hover:bg-gray-200/50 dark:hover:bg-gray-800/80"
         )}
       >
         {isTyping ? (
-          <div className="flex h-5 items-center gap-1">
-            <div className="h-1.5 w-1.5 rounded-full bg-gray-400 animate-pulse" />
-            <div className="h-1.5 w-1.5 rounded-full bg-gray-400 animate-pulse delay-150" />
-            <div className="h-1.5 w-1.5 rounded-full bg-gray-400 animate-pulse delay-300" />
+          <div className="flex h-6 items-center gap-1.5 px-2">
+            <div className="h-1.5 w-1.5 rounded-full bg-blue-500 animate-bounce [animation-delay:-0.3s]" />
+            <div className="h-1.5 w-1.5 rounded-full bg-blue-500 animate-bounce [animation-delay:-0.15s]" />
+            <div className="h-1.5 w-1.5 rounded-full bg-blue-500 animate-bounce" />
           </div>
         ) : (
-          <div className="w-full break-words">
+          <div className="w-full break-words max-w-none text-gray-800 dark:text-gray-100">
             <ReactMarkdown
               components={{
-                p: ({ node, ...props }) => <p className="mb-2 last:mb-0" {...props} />,
-                strong: ({ node, ...props }) => <strong className="font-semibold" {...props} />,
-                ul: ({ node, ...props }) => <ul className="list-disc pl-4 mb-2" {...props} />,
-                ol: ({ node, ...props }) => <ol className="list-decimal pl-4 mb-2" {...props} />,
+                p: ({ node, ...props }) => <p className="mb-3 last:mb-0 leading-relaxed" {...props} />,
+                strong: ({ node, ...props }) => <strong className="font-bold text-gray-950 dark:text-white" {...props} />,
+                ul: ({ node, ...props }) => <ul className="list-disc pl-5 mb-3 space-y-1" {...props} />,
+                ol: ({ node, ...props }) => <ol className="list-decimal pl-5 mb-3 space-y-1" {...props} />,
                 li: ({ node, ...props }) => <li className="mb-1" {...props} />,
+                a: ({ node, ...props }) => <a className="text-blue-600 font-medium underline decoration-2 underline-offset-2 transition-colors hover:text-blue-700 dark:text-blue-400 dark:hover:text-blue-300" {...props} />,
+                code: ({ node, ...props }) => <code className="rounded bg-gray-200 px-1.5 py-0.5 text-sm font-mono text-gray-900 dark:bg-gray-700 dark:text-gray-100" {...props} />,
               }}
             >
               {message.content}
             </ReactMarkdown>
           </div>
         )}
+
+        
+        {/* Subtle timestamp or status on hover could go here */}
       </div>
     </div>
   );
 }
+
