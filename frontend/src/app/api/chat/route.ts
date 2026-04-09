@@ -12,7 +12,7 @@ export async function POST(req: Request) {
       },
       body: JSON.stringify({
         message: body.message,
-        session_id: "default-session" // We use a shared session for this demo
+        session_id: body.session_id || "default-session" 
       }),
     });
 

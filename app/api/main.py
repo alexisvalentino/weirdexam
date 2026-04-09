@@ -1,5 +1,6 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
+from langchain_core.messages import HumanMessage
 from pydantic import BaseModel
 import uvicorn
 from app.graph.graph import graph
@@ -31,7 +32,7 @@ async def chat_endpoint(request: ChatRequest):
     
     # We pass the input. Note our reducer appends messages automatically
     inputs = {
-        "messages": [{"role": "user", "content": request.message}],
+        "messages": [HumanMessage(content=request.message)],
         "last_user_message": request.message,
         "answer": "",
         "validation_errors": [],

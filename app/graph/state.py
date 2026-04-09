@@ -15,3 +15,4 @@ class ChatState(TypedDict):
     answer: str | None
     quote_result: dict | None
     interrupt_context: dict | None
+    is_adjusting: bool | None
